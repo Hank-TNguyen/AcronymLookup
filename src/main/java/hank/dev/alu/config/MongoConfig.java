@@ -1,6 +1,7 @@
 package hank.dev.alu.config;
 
 import com.mongodb.MongoClient;
+import com.mongodb.MongoClientURI;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
@@ -12,7 +13,12 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class MongoConfig extends AbstractMongoConfiguration {
     @Override
     public MongoClient mongoClient() {
-        return new MongoClient("localhost", 27017);
+
+        MongoClientURI uri = new MongoClientURI(
+                "mongodb+srv://username:password@cluster0-pynq8.mongodb.net/test?retryWrites=true&w=majority");
+        MongoClient mongoClient = new MongoClient(uri);
+
+        return mongoClient;
     }
 
     @Bean

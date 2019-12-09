@@ -2,10 +2,13 @@ package hank.dev.alu.dto;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.CompoundIndex;
+import org.springframework.data.mongodb.core.index.CompoundIndexes;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document
 @Data
+@CompoundIndexes({ @CompoundIndex(name = "name-ext", def = "{'name' : 1, 'ext': 1}") })
 public class Acronym {
 
     @Id private String id;
