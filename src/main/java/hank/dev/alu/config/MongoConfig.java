@@ -12,7 +12,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 public class MongoConfig extends AbstractMongoConfiguration {
     @Override
     public MongoClient mongoClient() {
-        return new MongoClient("localhost");
+        return new MongoClient("localhost", 27017);
     }
 
     @Bean
